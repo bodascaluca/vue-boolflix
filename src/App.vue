@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <input type="text" placeholder="cerca film" v-on:keyup.enter="submit()" v-model="searchWords">
+    <input type="text" placeholder="cerca film" v-model="searchWords">
     <button @click="searchFilms()">Cerca</button>
 
     <FilmCards :films="films"/>
@@ -25,24 +25,16 @@ export default {
       filtrato:[],
     }
   },
-  computed:{
+  methods:{
     searchFilms(){
-      this.films.forEach((item)=>{
-         if(this.item.original_title.includes(this.searchWords)){
-            this.filtrato.push(searchWords);
-     }
-      })
-    
-    }
-  },
-  created(){
-    axios.get('https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&query=spring break')
+       axios.get('https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&query=' + this.searchWords)
     .then((resp)=>{
       console.log(resp);
       this.films=resp.data.results;
       console.log(this.films);
     })
-  }
+    }
+  },
 }
 </script>
 
