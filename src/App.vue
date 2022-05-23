@@ -1,10 +1,10 @@
 <template>
   <div id="app">
 
-    <input type="text" placeholder="cerca film">
+    <input type="text" placeholder="cerca film" v-on:keyup.enter="submit()">
     <button>Cerca</button>
 
-    <FilmCards />
+    <FilmCards :films="films"/>
 
   </div>
 </template>
