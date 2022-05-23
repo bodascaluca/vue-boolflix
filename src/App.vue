@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <input type="text" placeholder="cerca film" v-on:keyup.enter="submit()">
-    <button>Cerca</button>
+    <input type="text" placeholder="cerca film" v-on:keyup.enter="submit()" v-model="searchWords">
+    <button @click="searchFilms()">Cerca</button>
 
     <FilmCards :films="films"/>
 
@@ -21,6 +21,18 @@ export default {
   data(){
     return {
       films:[],
+      searchWords:"",
+      filtrato:[],
+    }
+  },
+  computed:{
+    searchFilms(){
+      this.films.forEach((item)=>{
+         if(this.item.original_title.includes(this.searchWords)){
+            this.filtrato.push(searchWords);
+     }
+      })
+    
     }
   },
   created(){
