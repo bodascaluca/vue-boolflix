@@ -40,9 +40,7 @@ export default {
        })
         //  .get(`https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&api_key=e99307154c6dfb0b4750f6603256716d&query=`+ this.searchWords)
     .then((resp)=>{
-      console.log(resp);
       this.films=resp.data.results;
-      console.log(this.films);
     })
 
 
@@ -57,9 +55,7 @@ export default {
       })
    
     .then((resp)=>{
-      console.log(resp);
       this.serietvs=resp.data.results;
-      console.log(this.serietvs);
     })
     }
   },

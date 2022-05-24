@@ -1,6 +1,7 @@
 <template>
   <div>
-      <img src="https://image.tmdb.org/t/p/w342{serietv.poster_path}" alt="">
+      {{ serietv.poster_path }}
+      <img :src="`https://image.tmdb.org/t/p/w342/${serietv.poster_path}`" alt="">
         <h1> {{ serietv.name}}</h1>
         <h2>{{ serietv.original_name}}</h2>
         <img class="img-flag" v-if="hasimage(serietv)" :src="require(`../assets/img/` + serietv.original_language + `.jpg`)" alt=""/>

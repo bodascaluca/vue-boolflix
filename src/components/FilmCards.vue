@@ -4,7 +4,7 @@
     <h2>Film</h2>
 
     <div class="card" v-for="(item, index) in films" :key="index">
-        <ContentCards  :item="item"/>
+        <ContentCards :item="item"/>
     </div>
 
     <h2>Serie tv</h2>
