@@ -1,33 +1,37 @@
 <template>
     <div class="flex" >
-       
-       <div class="card" v-for="(item, index) in films" :key="index" >
-            <h1>{{ item.title}}</h1>
-            <h2>{{ item.original_title}}</h2>
-            <img class="img-flag" v-if="hasimage(item)" :src="require(`../assets/img/` + item.original_language + `.jpg`)" alt=""/>
-            <p v-else> {{ item.original_language}}</p>
-            <h4>{{ item.vote_average}}</h4>
-        </div>
+    
+    <h2>Film</h2>
+
+    <div class="card" v-for="(item, index) in films" :key="index">
+        <ContentCards  :item="item"/>
+    </div>
+
+    <h2>Serie tv</h2>
+
+    <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
+        <ContentSerietv :serietv="serietv"/>
+    </div>
     
     </div>
 </template>
 
 <script>
+import ContentCards from './ContentCards.vue';
+import ContentSerietv from './ContentSerietv.vue';
+
+
+
 export default {
-    name:"FilmCards",
-    props:{
-        films:Array
+    name: "FilmCards",
+    props: {
+        films: Array,
+        serietvs: Array
     },
-    methods:{
-        hasimage(item){
-            //
-            if(item.original_language == `en` && `it` && `pt`){
-                return true;
-            } else {
-                return false;
-            }
+    components: { 
+        ContentCards,
+        ContentSerietv
         }
-    }
 }
 </script>
 
@@ -39,9 +43,6 @@ export default {
         flex-wrap: wrap;  
     }
 
-    .img-flag{
-        width: 20px;
-    }
     .card{
         margin:1rem;
         border:1px solid red;

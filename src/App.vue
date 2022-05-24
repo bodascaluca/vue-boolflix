@@ -4,7 +4,8 @@
     <input type="text" placeholder="cerca film" v-model="searchWords">
     <button @click="searchFilms()">Cerca</button>
 
-    <FilmCards :films="films"/>
+    <FilmCards :films="films" :serietvs="serietvs" />
+
 
   </div>
 </template>
@@ -23,22 +24,42 @@ export default {
       films:[],
       searchWords:"",
       filtrato:[],
+      serietvs:[]
     }
   },
   methods:{
     searchFilms(){
+
+
        axios
-      //  .get('https://api.themoviedb.org/3/search/movie', {
-      //    params:{
-      //      api_key:"e1cde3e49c4b61eacdb30a0c144e677b",
-      //      query:this.searchWords,
-      //    }
-      //  })
-         .get(`https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&api_key=e99307154c6dfb0b4750f6603256716d&query=`+ this.searchWords)
+       .get('https://api.themoviedb.org/3/search/movie', {
+         params:{
+           api_key:"e1cde3e49c4b61eacdb30a0c144e677b",
+           query:this.searchWords,
+         }
+       })
+        //  .get(`https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&api_key=e99307154c6dfb0b4750f6603256716d&query=`+ this.searchWords)
     .then((resp)=>{
       console.log(resp);
       this.films=resp.data.results;
       console.log(this.films);
+    })
+
+
+
+
+        axios
+      .get(`https://api.themoviedb.org/3/search/tv`,{
+        params:{
+          api_key:"e99307154c6dfb0b4750f6603256716d",
+          query:this.searchWords,
+        }
+      })
+   
+    .then((resp)=>{
+      console.log(resp);
+      this.serietvs=resp.data.results;
+      console.log(this.serietvs);
     })
     }
   },
