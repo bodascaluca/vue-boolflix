@@ -4,9 +4,8 @@
        <div class="card" v-for="(item, index) in films" :key="index" >
             <h1>{{ item.title}}</h1>
             <h2>{{ item.original_title}}</h2>
-            <img class="img-flag" :src="require(`../assets/img/` + item.original_language + `.jpg`)" alt=""/>
-            <!-- <img class="img-flag" :src="require(`../assets/img/${item.original_language}.jpg`)" alt=""> -->
-            <!-- <img class="img-flag" src="../assets/img/it.jpg" alt=""> -->
+            <img class="img-flag" v-if="hasimage(item)" :src="require(`../assets/img/` + item.original_language + `.jpg`)" alt=""/>
+            <p v-else> {{ item.original_language}}</p>
             <h4>{{ item.vote_average}}</h4>
         </div>
     
@@ -18,6 +17,16 @@ export default {
     name:"FilmCards",
     props:{
         films:Array
+    },
+    methods:{
+        hasimage(item){
+            //
+            if(item.original_language == `en` && `it` && `pt`){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
 </script>
