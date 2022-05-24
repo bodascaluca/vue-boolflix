@@ -11,19 +11,29 @@
 <script>
 export default {
     name:"ContentCards",
+    data:function(){
+        return {
+            numerostelle:"",
+        }
+    },
     props:{
         item:Object
     },
-       methods: {
-        hasimage(item) {
-            //
-            if (item.original_language == `en` || item.original_language == `it` ||item.original_language == `pt` || item.original_language == `fr` ) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+    methods: {
+     hasimage(item) {
+         //
+         if (item.original_language == `en` || item.original_language == `it` ||item.original_language == `pt` || item.original_language == `fr` ) {
+             return true;
+         }
+         else {
+             return false;
+         }
+     },
+     fammivederelestelle(item){
+         this.numerostelle = item.vote_average / 2;
+         console.log(this.numerostelle)
+     }
+
     },
 }
 </script>
@@ -33,4 +43,5 @@ export default {
      .img-flag{
         width: 20px;
     }
+
 </style>
