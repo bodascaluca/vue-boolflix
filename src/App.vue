@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <div class="header">
       <div class="header-left">
         <img class="img-luflix" src="./assets/img/luflix.png" alt="">
@@ -10,6 +11,10 @@
       </div>
     </div>
 
+     <div>
+      <HeaderTop />
+    </div>
+
     <div class="color">
       <FilmCards :films="films" :serietvs="serietvs" />
     </div>
@@ -18,19 +23,20 @@
 </template>
 
 <script>
-import FilmCards from "./components/FilmCards.vue" ;
+import FilmCards from "./components/FilmCards.vue";
+import HeaderTop from "./components/HeaderTop.vue";
 import axios from 'axios';
 
 export default {
   name: 'App',
   components:{
     FilmCards,
+    HeaderTop,
   },
   data(){
     return {
       films:[],
       searchWords:"",
-      filtrato:[],
       serietvs:[]
     }
   },
