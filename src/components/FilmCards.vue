@@ -1,15 +1,15 @@
 <template>
     <div class="flex" >
     
-    <h2>Film</h2>
-
-    <div class="card" v-for="(item, index) in films" :key="index">
+        
+        <div class="card" v-for="(item, index) in films" :key="index">
+        <h2>Film</h2>
         <ContentCards :item="item"/>
     </div>
 
-    <h2>Serie tv</h2>
 
     <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
+    <h2>Serie tv</h2>
         <ContentSerietv :serietv="serietv"/>
     </div>
     

@@ -1,14 +1,14 @@
 <template>
   <div id="app">
 
-     <div>
+     <div class="header">
       <HeaderTop 
       @recivedfilms="savefilmsArray($event)"
       @recivedserietvs="saveserietvsArray($event)"
       />
     </div>
 
-    <div class="color">
+    <div class="main">
       <FilmCards :films="films" :serietvs="serietvs" />
     </div>
 
@@ -22,12 +22,12 @@ import HeaderTop from "./components/HeaderTop.vue";
 export default {
   name: 'App',
   methods:{
-    savefilmsArray(searchwords){
-      this.films=searchwords;
+    savefilmsArray(films) {
+      this.films = films;
       console.log(this.films)
     },
-    saveserietvsArray(searchword){
-      this.serietvs=searchword;
+    saveserietvsArray(serietvs) {
+      this.serietvs = serietvs;
       console.log(this.serietvs)
     },
   },
@@ -40,14 +40,20 @@ export default {
   components:{
     FilmCards,
     HeaderTop,
-  },
- 
+  }
 }
 </script>
 
 <style lang="scss">
 @import "./style/common.scss";
 
+.header{
+  height:70px;
+}
 
+.main{
+  background-color: grey;
+  height:100%;
+}
 
 </style>

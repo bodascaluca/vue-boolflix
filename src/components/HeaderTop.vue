@@ -1,23 +1,22 @@
 <template>
-  <div>
-     <div class="header">
+  <div class="header">
+
       <div class="header-left">
         <img class="img-luflix" src="../assets/img/luflix.png" alt="">
       </div>
+    
       <div class="header-right">
-        <input type="text" placeholder="cerca film" v-model="searchWords">
-        <button @click="searchFilms()">Cerca</button>
+        <input class="header-right-input" type="text" placeholder="Cerca film o serie Tv " v-model="searchWords">
+        <button class="header-right-button" @click="searchFilms()">Search</button>
       </div>
-    </div>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 
-
 export default {
-  // emits:['films', 'serietvs'],
     name:"HeaderTop",
      data(){
     return {
@@ -26,42 +25,27 @@ export default {
       serietvs:[]
     }
   },
-  computed:{
-    sendfilmsprova(){
-      return this.$emit(`recivedfilms`,this.films);
-    },
-    sendserietvsprova(){
-      return this.$emit(`recivedserietvs`,this.serietvs);
-    }
-  },
   methods:{
     searchFilms(){
-       axios
-       .get('https://api.themoviedb.org/3/search/movie', {
-         params:{
-           api_key:"e1cde3e49c4b61eacdb30a0c144e677b",
-           query:this.searchWords,
-         }
-       })
-        //  .get(`https://api.themoviedb.org/3/search/movie?api_key=e1cde3e49c4b61eacdb30a0c144e677b&api_key=e99307154c6dfb0b4750f6603256716d&query=`+ this.searchWords)
-    .then((resp)=>{
-      this.films=resp.data.results;
-    })
 
-
-
-
-        axios
-      .get(`https://api.themoviedb.org/3/search/tv`,{
+      const options = {
         params:{
           api_key:"e99307154c6dfb0b4750f6603256716d",
           query:this.searchWords,
         }
-      })
-   
-    .then((resp)=>{
-      this.serietvs=resp.data.results;
-    })
+      }
+
+      axios.get('https://api.themoviedb.org/3/search/movie', options)
+      .then((resp)=>{
+        this.films = resp.data.results;
+        this.$emit('recivedfilms', this.films);
+      });
+
+      axios.get(`https://api.themoviedb.org/3/search/tv`, options)
+      .then((resp)=>{
+        this.serietvs = resp.data.results;
+        this.$emit('recivedserietvs', this.serietvs);
+      });
     }
   },
 }
@@ -70,29 +54,40 @@ export default {
 <style scoped lang="scss">
 @import "../style/common.scss";
 
-#app{
-  height:100vh;
-  background: linear-gradient(to bottom,  black 0vh,
-                                          black 15vh,
-                                          grey 15vh,
-                                          grey 100%);
-}
-
   .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: black;
 
     &-left{
-      margin-left:1rem;
+      margin-left:2rem;
 
       .img-luflix{
-          width: 200px;
+          height: 50px;
       }
     }
 
-    &-right{
+    .header-right{
       margin-right:1rem;
+
+      &-input{
+        padding: .3rem .6rem;
+        border-radius:10px 0 0 10px;
+        background-color: white;
+        border-right:none;
+        border: 1px solid white ;
+        color:grey;
+      }
+
+      &-button{
+        padding: .3rem 1rem;
+        border-radius:0 10px 10px 0;
+        background-color: white;
+        border-left:none;
+        border: 1px solid white;
+        color:grey;
+      }
     }
   }
 </style>
