@@ -8,8 +8,17 @@
             <h4>{{ item.vote_average}}</h4>
 
             <ul class="stars">
-                <li v-for="star, index in Math.ceil(item.vote_average / 2)" :key="index">&#9733;</li>
+                <li v-for="star, index in fammivederelestelle(item.vote_average)" :key="index">&#9733;</li>
             </ul>
+
+             <!-- <ul class="stars">
+                <li v-for="star, index in fammivederelestelle(item.vote_average)" :key="index">&#9733;</li>
+            </ul> -->
+
+             <!-- <ul class="stars">
+                <li v-for="star, index in Math.ceil(item.vote_average / 2)" :key="index">&#9733;</li>
+            </ul> -->
+            
   </div>
 </template>
 
@@ -37,6 +46,10 @@ export default {
      fammivederelestelle(vote){
          return Math.ceil(vote / 2);
      }
+
+    //     fammivederelestelle(vote){
+    //      return Math.ceil(vote / 2);
+    //  }
 
     },
 }
