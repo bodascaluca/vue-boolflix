@@ -17,6 +17,7 @@ import axios from 'axios';
 
 
 export default {
+  // emits:['films', 'serietvs'],
     name:"HeaderTop",
      data(){
     return {
@@ -27,10 +28,10 @@ export default {
   },
   computed:{
     sendfilmsprova(){
-      return $emit(`recivedfilms`,this.films);
+      return this.$emit(`recivedfilms`,this.films);
     },
     sendserietvsprova(){
-      return $emit(`recivedserietvs`,this.serietvs);
+      return this.$emit(`recivedserietvs`,this.serietvs);
     }
   },
   methods:{

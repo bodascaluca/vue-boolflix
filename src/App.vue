@@ -24,9 +24,11 @@ export default {
   methods:{
     savefilmsArray(searchwords){
       this.films=searchwords;
+      console.log(this.films)
     },
-    saveserietvsArray(searchwords){
-      this.serietvs=searchwords;
+    saveserietvsArray(searchword){
+      this.serietvs=searchword;
+      console.log(this.serietvs)
     },
   },
   data: function(){
