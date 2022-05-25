@@ -47,13 +47,23 @@ export default {
 <style lang="scss">
 @import "./style/common.scss";
 
+// #app{
+//   background-color: grey;
+// }
+
+
 .header{
   height:70px;
+  width:100%;
+  position: fixed;
+  top:0;
+  left:0;
 }
 
 .main{
   background-color: grey;
-  height:100%;
+  margin-top:70px;
+  padding-left:2rem;
 }
 
 </style>

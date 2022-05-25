@@ -1,18 +1,20 @@
 <template>
-    <div class="flex" >
+    <div>
     
-        
-        <div class="card" v-for="(item, index) in films" :key="index">
         <h2>Film</h2>
-        <ContentCards :item="item"/>
-    </div>
+        <div class="row">
+        <div class="card" v-for="(item, index) in films" :key="index">
+            <ContentCards :item="item"/>
+        </div>
+    </div>                
 
-
-    <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
-    <h2>Serie tv</h2>
-        <ContentSerietv :serietv="serietv"/>
+        <h2>Serie tv</h2>
+    <div class="row">
+        <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
+            <ContentSerietv :serietv="serietv"/>
+        </div>
     </div>
-    
+   
     </div>
 </template>
 
@@ -37,16 +39,19 @@ export default {
 
 <style scoped lang="scss">
 @import "../style/common.scss"; 
-    
-    .flex{
-        display: flex; 
-        flex-wrap: wrap;  
+    .row{
+        display:flex;
+        border:1px solid blue;
+        height: 400px;
+        overflow: hidden;
+        overflow-x:auto;
     }
-
     .card{
-        margin:1rem;
+        display: flex;
+        align-items: center;
+        margin:5px;
         border:1px solid red;
-        width: calc(100% / 4 - 2px);
+        // width: 300px;
     }
 
 </style>

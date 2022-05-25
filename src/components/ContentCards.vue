@@ -1,15 +1,19 @@
 <template>
-  <div>
-            <h1>{{ item.title}}</h1>
-            <img :src="`https://image.tmdb.org/t/p/w342/${item.poster_path}`" alt="">
-            <h2>{{ item.original_title}}</h2>
-            <img class="img-flag" v-if="hasimage(item)" :src="require(`../assets/img/` + item.original_language + `.jpg`)" alt=""/>
-            <p v-else> {{ item.original_language}}</p>
-            <h4>{{ item.vote_average}}</h4>
+  <div class="cover">
+          <img class="img-cover" :src="`https://image.tmdb.org/t/p/w342/${item.poster_path}`" alt="">
+     
 
-            <ul class="stars">
-                <li v-for="star, index in fammivederelestelle(item.vote_average)" :key="index">&#9733;</li>
-            </ul>
+      <div class="information">
+          <h1>{{ item.title}}</h1>
+          <h2>{{ item.original_title}}</h2>
+          <img class="img-flag" v-if="hasimage(item)" :src="require(`../assets/img/` + item.original_language + `.jpg`)" alt=""/>
+          <p v-else> {{ item.original_language}}</p>
+          <h4>{{ item.vote_average}}</h4>
+
+          <ul class="stars">
+              <li v-for="star, index in fammivederelestelle(item.vote_average)" :key="index">&#9733;</li>
+          </ul>
+      </div>
 
              <!-- <ul class="stars">
                 <li v-for="star, index in fammivederelestelle(item.vote_average)" :key="index">&#9733;</li>
@@ -56,6 +60,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../style/common.scss";
 
     .stars {
         display: flex;
@@ -69,5 +74,26 @@ export default {
      .img-flag{
         width: 20px;
     }
+    .information{
+        display:none;
+    }
+    
+    .cover{
+        position: relative;
+    }
+    .cover .img-cover{
+        width:250px;
+    }
+
+    .information{
+        position: absolute;
+        top:2px;
+
+
+        // display:none;
+    }
+    // .cover .img-cover:hover .information{
+    //    display: inline-block; 
+    // }
 
 </style>
