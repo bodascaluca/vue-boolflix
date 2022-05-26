@@ -6,10 +6,10 @@
       </div>
     
       <div class="header-right">
-        <input class="header-right-input" type="text" placeholder="Cerca film o serie Tv " v-model="searchWords">
-        <button class="header-right-button" @click="searchFilms()">Search</button>
+        <input class="header-right-input" type="text" placeholder="Cerca film o serie Tv " v-model="searchWords" @keyup.enter="searchWords ? searchFilms() : sendprops()">
+        <button class="header-right-button" @click="testtheaxios() ">Search</button>
       </div>
-
+  <!-- searchWords ? searchFilms() : sendprops() -->
   </div>
 </template>
 
@@ -26,6 +26,15 @@ export default {
     }
   },
   methods:{
+
+    testtheaxios(){
+      if (this.searchWords == ""){
+        this.sendprops()
+      } else {
+        this.searchFilms()
+      }
+    },
+
     searchFilms(){
 
       const options = {
@@ -46,6 +55,11 @@ export default {
         this.serietvs = resp.data.results;
         this.$emit('recivedserietvs', this.serietvs);
       });
+
+       this.searchWords = ""
+    },
+    sendprops(){
+      alert("Non hai scritto niente");
     }
   },
 }
