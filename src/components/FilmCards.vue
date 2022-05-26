@@ -2,11 +2,12 @@
 
     <div>
         <h2>Film</h2>
-        <div class="row">
-        <div class="card" v-for="(item, index) in films" :key="index">
-            <ContentCards :item="item"/>
+        <div class="row" v-if="films.length">
+            <div class="card" v-for="(item, index) in films" :key="index">
+                <ContentCards :item="item"/>
+            </div>
         </div>
-    </div>                
+        <h1 v-else>Non ci sono film</h1>            
 
         <h2>Serie tv</h2>
     <div class="row">
