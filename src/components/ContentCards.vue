@@ -69,6 +69,7 @@ export default {
         width: 250px;
         border: 1px solid yellow;
         background-color: black;
+        height: 100%;
         .information{
             display:none;
             color:white;
@@ -86,8 +87,9 @@ export default {
         }
         .img-container{
             width: 250px;
+            height: 100%;
 
-            &-cover{
+            .img-cover{
                 width:100%;
                 height: 100%;
             }
@@ -100,11 +102,16 @@ export default {
             color: orange;
             margin: 5px;
             }
+        }  
+    }
+
+
+        .cover:hover .information{
+            display:block;
+        }
+         .cover:hover .img-container{
+            display:none;
         }
 
-        .cover:active .information{
-            display:flex;
-        }
-       
-    }
+        
 </style>
