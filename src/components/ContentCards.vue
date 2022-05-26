@@ -1,6 +1,9 @@
 <template>
   <div class="cover">
+
+      <div class="img-container">
           <img class="img-cover" :src="`https://image.tmdb.org/t/p/w342/${item.poster_path}`" alt="">
+      </div>
      
 
       <div class="information">
@@ -54,7 +57,6 @@ export default {
     //     fammivederelestelle(vote){
     //      return Math.ceil(vote / 2);
     //  }
-
     },
 }
 </script>
@@ -62,38 +64,47 @@ export default {
 <style scoped lang="scss">
 @import "../style/common.scss";
 
-    .stars {
-        display: flex;
-        list-style: none;
-    }
-
-    .stars li {
-        color: orange;
-        margin: 5px;
-    }
-     .img-flag{
-        width: 20px;
-    }
-    .information{
-        display:none;
-    }
-    
-    .cover{
+     .cover{
         position: relative;
+        width: 250px;
+        border: 1px solid yellow;
+        background-color: black;
+        .information{
+            display:none;
+            color:white;
+            text-align: center;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate( - 50% , - 50% );
+            // background-color: black;
+            // padding:1rem;
+
+            .img-flag{
+                width: 20px;
+            }
+        }
+        .img-container{
+            width: 250px;
+
+            &-cover{
+                width:100%;
+                height: 100%;
+            }
+        }
+        .stars{
+            display: flex;
+            list-style: none;
+
+             & li {
+            color: orange;
+            margin: 5px;
+            }
+        }
+
+        .cover:active .information{
+            display:flex;
+        }
+       
     }
-    .cover .img-cover{
-        width:250px;
-    }
-
-    .information{
-        position: absolute;
-        top:2px;
-
-
-        // display:none;
-    }
-    // .cover .img-cover:hover .information{
-    //    display: inline-block; 
-    // }
-
 </style>

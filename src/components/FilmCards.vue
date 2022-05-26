@@ -1,6 +1,6 @@
 <template>
+
     <div>
-    
         <h2>Film</h2>
         <div class="row">
         <div class="card" v-for="(item, index) in films" :key="index">
@@ -46,12 +46,11 @@ export default {
         overflow: hidden;
         overflow-x:auto;
     }
+
     .card{
         display: flex;
         align-items: center;
         margin:5px;
         border:1px solid red;
-        // width: 300px;
     }
-
 </style>
