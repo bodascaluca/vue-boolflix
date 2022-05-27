@@ -68,7 +68,7 @@ export default {
      .cover{
         position: relative;
         width: 250px;
-        border: 1px solid yellow;
+        // border: 1px solid yellow;
         background-color: black;
         height: 100%;
         overflow: hidden;
@@ -79,13 +79,7 @@ export default {
             display:none;
             color:white;
             text-align: center;
-            // position: absolute;
-            // left:50%;
-            // top:50%;
-            // transform: translate( - 50% , - 50% );
             margin: 20px;
-            // margin-bottom: 0px;
-            // vertical-align: top;
 
             .img-flag{
                 width: 20px;

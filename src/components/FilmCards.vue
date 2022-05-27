@@ -54,7 +54,7 @@ export default {
 
     .row{
         display:flex;
-        border:1px solid blue;
+        // border:1px solid blue;
         height: 400px;
         overflow: hidden;
         overflow-x:auto;
@@ -64,6 +64,6 @@ export default {
         display: flex;
         align-items: center;
         margin:5px;
-        border:1px solid red;
+        // border:1px solid red;
     }
 </style>
