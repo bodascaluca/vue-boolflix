@@ -1,20 +1,22 @@
 <template>
 
     <div>
-        <h2>Film</h2>
+        <h1>Film</h1>
         <div class="row" v-if="films.length">
             <div class="card" v-for="(item, index) in films" :key="index">
                 <ContentCards :item="item"/>
             </div>
         </div>
-        <h1 v-else>Non ci sono film</h1>            
+        <h2 class="heightMin" v-else>Se vuoi puoi cercare altri Film...</h2>            
 
-        <h2>Serie tv</h2>
-    <div class="row">
-        <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
-            <ContentSerietv :serietv="serietv"/>
-        </div>
-    </div>
+        <h1>Serie tv</h1>
+        <div class="row" v-if="serietvs.length">
+            <div class="card" v-for="(serietv) in serietvs" :key="serietv.id">
+                <ContentSerietv :serietv="serietv"/>
+            </div>
+         </div>
+        <h2 class="heightMin" v-else>Se vuoi puoi cercare altre SerieTv...</h2>            
+         
    
     </div>
 </template>
@@ -40,6 +42,16 @@ export default {
 
 <style scoped lang="scss">
 @import "../style/common.scss"; 
+
+    .heightMin{
+         height:400px;
+         margin-top:1rem;
+    }
+
+    h1{
+        color: white;
+    }
+
     .row{
         display:flex;
         border:1px solid blue;
